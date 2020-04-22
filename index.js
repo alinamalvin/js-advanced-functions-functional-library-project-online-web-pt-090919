@@ -59,13 +59,15 @@ const fi = (function() {
     
      size: function(collection) {
       return (collection instanceof Array) ? collection.length : Object.keys(collection).length
-    },	    },
+    },	   
     
     first: function(arr, num) {
       return num ? arr.slice(0, num) : arr[0]
     },
 
-
+    last: function(arr, num) {
+      return num ? arr.slice(arr.length - num, arr.length) : arr[arr.length - 1]
+    },	    
 
 
   }
