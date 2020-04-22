@@ -5,7 +5,11 @@ const fi = (function() {
     },
 
     each: function(collection, callback) {
-       const newCollection = (Array.isArray(collection)) ? collection : Object.values(collection); 
+      const specificCollection = (collection instanceof Array) ? collection : Object.values(collection)
+      for (let i = 0; i < specificCollection.length; i++) {
+        callback(specificCollection[i])
+      }
+      return collection
     },
 
     map: function(collection, callbac) {
