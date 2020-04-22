@@ -21,8 +21,19 @@ const fi = (function() {
       return newArr
     },
 
-    reduce: function() {
-
+    reduce: function(collection, callback, acc) {
+      if (acc) {
+        for (let i = 0; i < collection.length; i++) {
+          acc = callback(acc, collection[i])
+        }
+        return acc
+      } else {
+        acc = collection[0]
+        for (let i = 1; i < collection.length; i++) {
+          acc = callback(acc, collection[i])
+        }
+      }
+      return acc
     },
 
     functions: function() {
