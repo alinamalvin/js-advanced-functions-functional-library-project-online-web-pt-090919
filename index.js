@@ -12,8 +12,13 @@ const fi = (function() {
       return collection
     },
 
-    map: function(collection, callbac) {
-
+    map: function(collection, callback) {
+      const specificCollection = (collection instanceof Array) ? collection : Object.values(collection)
+      const newArr = []
+      for (let i = 0; i < specificCollection.length; i++) {
+        newArr.push(callback(specificCollection[i]))
+      }
+      return newArr
     },
 
     reduce: function() {
