@@ -36,8 +36,14 @@ const fi = (function() {
       return acc
     },
 
-    functions: function() {
-
+    find: function(collection, predicate) {
+      const specificCollection = (collection instanceof Array) ? collection : Object.values(collection)
+      for (let i = 0; i < specificCollection.length; i++) {
+        if (predicate(specificCollection[i])) {
+          return specificCollection[i]
+        }
+      }
+      return undefined
     },
 
 
