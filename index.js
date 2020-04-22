@@ -60,6 +60,12 @@ const fi = (function() {
      size: function(collection) {
       return (collection instanceof Array) ? collection.length : Object.keys(collection).length
     },	    },
+    
+    first: function(arr, num) {
+      return num ? arr.slice(0, num) : arr[0]
+    },
+
+
 
 
   }
