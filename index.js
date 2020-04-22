@@ -5,10 +5,10 @@ const fi = (function() {
     },
 
     each: function(collection, callback) {
-       return 
+       const newCollection = (Array.isArray(collection)) ? collection : Object.values(collection); 
     },
 
-    map: function() {
+    map: function(collection, callbac) {
 
     },
 
