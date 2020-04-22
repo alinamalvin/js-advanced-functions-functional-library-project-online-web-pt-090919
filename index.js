@@ -45,6 +45,17 @@ const fi = (function() {
       }
       return undefined
     },
+    
+    filter: function(collection, predicate) {
+      const specificCollection = (collection instanceof Array) ? collection : Object.values(collection)
+      const filteredArr = []
+      for (let i = 0; i < specificCollection.length; i++) {
+        if (predicate(specificCollection[i])) {
+          filteredArr.push(specificCollection[i])
+        }
+      }
+      return filteredArr
+    },
 
 
   }
