@@ -79,6 +79,72 @@ const fi = (function() {
       const newArr = [...arr]
       return newArr.sort((a, b) => callback(a) - callback(b))
     },	    
+    
+    flatten: function(arr, shallow, newArr = []) {
+      if(!Array.isArray(arr)) {
+        return newArr.push(arr)
+      }
+      if (shallow) {
+        for (let element of arr) {
+          if (Array.isArray(element)) {
+            for (let value of element) {
+              newArr.push(value)
+            }
+          } else {
+            newArr.push(element)
+          }
+        }
+      } else {
+        for (let element of arr) {
+          this.flatten(element, false, newArr)
+        }
+      }
+      return newArr
+    },
+
+    uniq: function(collection, isSorted = false, callback = false) {
+      if (!callback) {
+        return [...new Set(collection)]
+      } else {
+        let transformedArr = []
+        let uniqArr = []
+        for (let e of collection) {
+          let newE = callback(e)
+          if (!transformedArr.includes(newE)) {
+            transformedArr.push(callback(newE))
+            uniqArr.push(e)
+          }
+        }
+        return uniqArr
+      }
+    },
+
+    keys: function(object) {
+      const keys = []
+      for (const key in object) {
+        keys.push(key)
+      }
+      return keys
+    },
+
+    values: function(object) {
+      const values = []
+      for (const key in object) {
+        values.push(object[key])
+      }
+      return values
+    },
+
+
+    functions: function(object) {
+      const functions = []
+      for (const key in object) {
+        if (typeof object[key] === "function") {
+          functions.push(key)
+        }
+      }
+      return functions.sort()
+    },	    
 
 
   }
