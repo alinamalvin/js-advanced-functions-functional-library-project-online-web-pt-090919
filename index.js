@@ -68,6 +68,17 @@ const fi = (function() {
     last: function(arr, num) {
       return num ? arr.slice(arr.length - num, arr.length) : arr[arr.length - 1]
     },	    
+    
+    compact: function(arr) {
+      const falsey = [false, null, 0, "", undefined, NaN]
+      return arr.filter(value => !falsey.includes(value))
+    },
+
+
+    sortBy: function(arr, callback) {
+      const newArr = [...arr]
+      return newArr.sort((a, b) => callback(a) - callback(b))
+    },	    
 
 
   }
